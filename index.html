@@ -16,6 +16,7 @@
     .left { text-align: left; }
     .notes-tip { font-size:.6em; opacity:.75; }
   </style>
+  <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
 </head>
 <body>
   <!-- Language selector -->
@@ -35,6 +36,14 @@
         <p class="subtitle" data-i18n-hu="Bázel → Guernsey → Írország → Skócia → Feröer → Izland → Grönland" data-i18n-en="Basel → Guernsey → Ireland → Scotland → Faroe → Iceland → Greenland">Bázel → Guernsey → Írország → Skócia → Feröer → Izland → Grönland</p>
         <p class="badge" data-i18n-hu="Eötvös József Gimnázium • Eötvös Napok" data-i18n-en="Eötvös József Gymnasium • Eötvös Days">Eötvös József Gimnázium • Eötvös Napok</p>
         <aside class="notes">Köszöntés, laza bevezetés, Eötvös-kötődés. 5 perc.</aside>
+      </section>
+
+      <!-- 0.5 TRIPS – DECK.GL CINEMATIC REPLAY -->
+      <section data-state="init-trips">
+        <h3 data-i18n-hu="Útvonal – filmes visszajátszás" data-i18n-en="Route — cinematic replay">Útvonal – filmes visszajátszás</h3>
+        <div id="deckgl-map" style="width:100%; height:640px; border-radius:12px; overflow:hidden;"></div>
+        <p class="notes-tip" data-i18n-hu="Tipp: kattints a térképre, húzd az egeret; a lejátszás automatikus." data-i18n-en="Tip: click & drag the map; playback is automatic.">Tipp: kattints a térképre, húzd az egeret; a lejátszás automatikus.</p>
+        <aside class="notes" data-i18n-hu="Röviden: honnan hová, időrend, érzés a távolságról." data-i18n-en="Briefly: from-to, timeline, a feel for distance.">Röviden: honnan hová, időrend, érzés a távolságról.</aside>
       </section>
 
       <!-- 1. BEVEZETÉS – CSALÁD, EÖTVÖS, EBC -->
@@ -283,6 +292,102 @@
       select.addEventListener('change', e => apply(e.target.value));
       apply(saved);
     })();
+  </script>
+  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@deck.gl/core@8.9.36/dist.min.js"></script>
+  <script src="https://unpkg.com/@deck.gl/layers@8.9.36/dist.min.js"></script>
+  <script src="https://unpkg.com/@deck.gl/geo-layers@8.9.36/dist.min.js"></script>
+  <script src="https://unpkg.com/@deck.gl/mapbox@8.9.36/dist.min.js"></script>
+  <script>
+    // Minimal trips data (fallback). Replace with assets/flight_trips.json
+    const DEFAULT_TRIPS = [
+      {
+        path: [
+          [7.58997,47.5596],   // Basel
+          [-2.547,49.448],     // Guernsey
+          [-9.516,52.058],     // Killarney
+          [-7.266,54.344],     // Enniskillen
+          [-6.203,55.681],     // Islay
+          [-6.386,58.215],     // Stornoway
+          [-6.77,62.05],       // Faroe (approx)
+          [-14.394,65.267],    // Egilsstaðir
+          [-22.660,70.743],    // Constable Point (~)
+          [-37.017,65.573],    // Kulusuk
+          [-51.100,69.217],    // Ilulissat
+          [-51.721,64.181]     // Nuuk
+        ],
+        timestamps: [
+          0,  3600,  7200, 10800, 14400, 18000, 23000, 30000, 42000, 54000, 66000, 80000
+        ]
+      }
+    ];
+
+    const STYLE_URL = 'https://demotiles.maplibre.org/style.json';
+    let tripsOverlay, tripsMap, tripsAnimId;
+
+    async function loadTrips(){
+      try {
+        const r = await fetch('assets/flight_trips.json');
+        if (!r.ok) throw new Error('no file');
+        return await r.json();
+      } catch(e){
+        return DEFAULT_TRIPS;
+      }
+    }
+
+    async function initTrips(){
+      if (tripsMap) { tripsMap.resize(); return; }
+
+      const data = await loadTrips();
+      const startTs = Math.min(...data.flatMap(d=>d.timestamps));
+      const endTs   = Math.max(...data.flatMap(d=>d.timestamps));
+
+      tripsMap = new maplibregl.Map({
+        container: 'deckgl-map', style: STYLE_URL, center: [-15, 60], zoom: 3
+      });
+      tripsMap.addControl(new maplibregl.NavigationControl());
+
+      const overlay = new deck.MapboxOverlay({
+        interleaved: true,
+        layers: [ new deck.TripsLayer({
+          id:'trips',
+          data,
+          getPath: d => d.path,
+          getTimestamps: d => d.timestamps,
+          getColor: [0, 200, 255],
+          widthMinPixels: 4,
+          rounded: true,
+          trailLength: 600, // seconds visible behind the head
+          currentTime: 0
+        }) ]
+      });
+      tripsMap.addControl(overlay);
+      tripsOverlay = overlay;
+
+      // Fit bounds to the whole path
+      const all = data[0].path;
+      const lons = all.map(p=>p[0]), lats = all.map(p=>p[1]);
+      const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
+      tripsMap.fitBounds(bounds, { padding: 40, linear: true });
+
+      // Animate currentTime from startTs to endTs and loop
+      let t = startTs;
+      function animate(){
+        t += 60; // advance 60s per frame for a fast replay
+        if (t > endTs) t = startTs;
+        tripsOverlay.setProps({ layers: [ tripsOverlay._props.layers[0].clone({ currentTime: t }) ] });
+        tripsAnimId = requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // Hook into Reveal lifecycle – init when that slide appears
+    Reveal.on('init-trips', initTrips);
+    Reveal.on('slidechanged', e => {
+      if (e.currentSlide && e.currentSlide.dataset.state === 'init-trips') {
+        initTrips();
+      }
+    });
   </script>
 </body>
 </html>
