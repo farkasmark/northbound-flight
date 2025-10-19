@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Repülés a jég birodalmába – Eötvös előadás</title>
+  <!-- Reveal.js (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme" />
+  <style>
+    /* Egy kis finom hangolás a képekhez/videókhoz */
+    .reveal section img { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .reveal .credit { font-size: .55em; opacity: .8; }
+    .reveal .subtitle { font-size: 1.1em; opacity: .85; }
+    .reveal .badge { display:inline-block; padding:.25em .6em; border:1px solid rgba(255,255,255,.5); border-radius:999px; font-size:.6em; letter-spacing:.04em; }
+    .left { text-align: left; }
+    .notes-tip { font-size:.6em; opacity:.75; }
+  </style>
+</head>
+<body>
+  <!-- Language selector -->
+  <div id="lang-switch" style="position:fixed; z-index:9999; top:12px; right:12px; background:rgba(0,0,0,.6); padding:6px 10px; border-radius:10px; font-family:system-ui,-apple-system,Segoe UI,Roboto;">
+    <label for="lang" style="font-size:12px; opacity:.85; margin-right:6px;">Language / Nyelv:</label>
+    <select id="lang" style="background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5); border-radius:8px; padding:4px 8px;">
+      <option value="hu">Magyar</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 0. CÍMDIA -->
+      <section data-background-image="assets/cover_icebergs.jpg" data-background-opacity="0.25">
+        <h2 data-i18n-hu="Repülés a jég birodalmába" data-i18n-en="Flight Beyond the Ice">Repülés a jég birodalmába</h2>
+        <p class="subtitle" data-i18n-hu="Bázel → Guernsey → Írország → Skócia → Feröer → Izland → Grönland" data-i18n-en="Basel → Guernsey → Ireland → Scotland → Faroe → Iceland → Greenland">Bázel → Guernsey → Írország → Skócia → Feröer → Izland → Grönland</p>
+        <p class="badge" data-i18n-hu="Eötvös József Gimnázium • Eötvös Napok" data-i18n-en="Eötvös József Gymnasium • Eötvös Days">Eötvös József Gimnázium • Eötvös Napok</p>
+        <aside class="notes">Köszöntés, laza bevezetés, Eötvös-kötődés. 5 perc.</aside>
+      </section>
+
+      <!-- 1. BEVEZETÉS – CSALÁD, EÖTVÖS, EBC -->
+      <section>
+        <section class="left">
+          <h3 data-i18n-hu="Sziasztok! Én is Eötvösös voltam (1998–2004)" data-i18n-en="Hi! I also went to Eötvös (1998–2004)">Sziasztok! Én is Eötvösös voltam (1998–2004)</h3>
+          <ul>
+            <li data-i18n-hu="Feleségem is ide járt – ma itt tanít." data-i18n-en="My wife also studied here — today she teaches here.">Feleségem is ide járt – ma itt tanít.</li>
+            <li data-i18n-hu="Az Eötvösös barátságok még ma is visznek előre." data-i18n-en="Friendships from Eötvös still carry me forward.">Az Eötvösös barátságok még ma is visznek előre.</li>
+          </ul>
+          <aside class="notes">Mutasd a családi fotót, laza hang, közösségi kötődés.</aside>
+        </section>
+        <section data-background-image="assets/family.jpg" data-background-opacity="0.2">
+          <h3 data-i18n-hu="Család" data-i18n-en="Family">Család</h3>
+          <p class="subtitle">(Ide tegyél be egy családi fotót)</p>
+        </section>
+        <section data-background-image="assets/ebc.jpg" data-background-opacity="0.25">
+          <h3 data-i18n-hu="Everest Base Camp" data-i18n-en="Everest Base Camp">Everest Base Camp</h3>
+          <p class="subtitle">Eötvösös barátokkal – a kíváncsiság és a csapat visz tovább.</p>
+        </section>
+      </section>
+
+      <!-- 2. A GÉP ÉS A REPÜLÉS – TECH BLOKK -->
+      <section>
+        <section>
+          <h3 data-i18n-hu="Diamond DA42 – a mini „airliner”" data-i18n-en="Diamond DA42 – the mini ‘airliner’">Diamond DA42 – a mini „airliner”</h3>
+          <img src="assets/da42_exterior.jpg" alt="Diamond DA42" />
+          <p class="credit" data-i18n-hu="Kétmotoros, kompozit, ~360 km/h, ~1700 km hatótáv." data-i18n-en="Twin-engine, composite, ~360 km/h, ~1700 km range.">Kétmotoros, kompozit, ~360 km/h, ~1700 km hatótáv.</p>
+          <aside class="notes">Röviden a gép paramétereiről, miért alkalmas az útra.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Glass cockpit – Garmin G1000" data-i18n-en="Glass cockpit – Garmin G1000">Glass cockpit – Garmin G1000</h3>
+          <img src="assets/g1000.jpg" alt="Garmin G1000 cockpit" />
+          <ul>
+            <li data-i18n-hu="PFD + MFD: mesterséges horizont, térkép, motoradatok" data-i18n-en="PFD + MFD: attitude, map, engine data">PFD + MFD: mesterséges horizont, térkép, motoradatok</li>
+            <li data-i18n-hu="Autopilot, GPS – a &quot;repülő számítógép&quot;" data-i18n-en="Autopilot, GPS — a ‘flying computer’">Autopilot, GPS – a &quot;repülő számítógép&quot;</li>
+          </ul>
+          <aside class="notes">Mutass rá, mit néz a pilóta repülés közben.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Hogyan irányít a pilóta?" data-i18n-en="How does a pilot control the aircraft?">Hogyan irányít a pilóta?</h3>
+          <img src="assets/controls.png" alt="Vezérsíkok és kormányfelületek" />
+          <ul>
+            <li data-i18n-hu="Bólintás (pitch) – magassági" data-i18n-en="Pitch — elevator">Bólintás (pitch) – magassági</li>
+            <li data-i18n-hu="Gördülés (roll) – csűrő" data-i18n-en="Roll — aileron">Gördülés (roll) – csűrő</li>
+            <li data-i18n-hu="Elfordulás (yaw) – oldalkormány" data-i18n-en="Yaw — rudder">Elfordulás (yaw) – oldalkormány</li>
+          </ul>
+          <aside class="notes">Egyszerűen, kézmozdulatokkal illusztrálni.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Miért repül a repülő?" data-i18n-en="Why does an airplane fly?">Miért repül a repülő?</h3>
+          <img src="assets/airfoil.png" alt="Szárnyprofil és emelőerő" />
+          <p data-i18n-hu="Gyorsabb áramlás felül → alacsonyabb nyomás → emelőerő." data-i18n-en="Faster airflow on top → lower pressure → lift.">Gyorsabb áramlás felül → alacsonyabb nyomás → emelőerő.</p>
+          <aside class="notes">Bernoulli + állásszög, közérthetően.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="VFR vs IFR" data-i18n-en="VFR vs IFR">VFR vs IFR</h3>
+          <ul>
+            <li data-i18n-hu="VFR: látás szerint (mi így repültünk nagy részben)" data-i18n-en="VFR: by visual reference (this is how we mostly flew)"><strong>VFR</strong>: látás szerint (mi így repültünk nagy részben)</li>
+            <li data-i18n-hu="IFR: műszerek alapján, felhőben/sötétben" data-i18n-en="IFR: instrument-based, for cloud/night/low visibility"><strong>IFR</strong>: műszerek alapján, felhőben/sötétben</li>
+          </ul>
+          <aside class="notes">Időjárás szerepe, döntési pontok.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Hideg, jegesedés, túlélőfelszerelés" data-i18n-en="Cold, icing, survival gear">Hideg, jegesedés, túlélőfelszerelés</h3>
+          <ul>
+            <li data-i18n-hu="Anti-ice rendszerek, fűtött beömlők" data-i18n-en="Anti-ice systems, heated inlets">Anti-ice rendszerek, fűtött beömlők</li>
+            <li data-i18n-hu="Mentőcsónak, túlélőruha, ELT, satcom" data-i18n-en="Liferaft, survival suit, ELT, satcom">Mentőcsónak, túlélőruha, ELT, satcom</li>
+          </ul>
+          <aside class="notes">Miért kritikus az óceán felett.</aside>
+        </section>
+      </section>
+
+      <!-- 3. BÁZEL → GUERNSEY → ÍRORSZÁG → SKÓCIA -->
+      <section>
+        <section data-background-image="assets/route_basel_guernsey.png" data-background-opacity="0.2">
+          <h3 data-i18n-hu="Bázel → Guernsey" data-i18n-en="Basel → Guernsey">Bázel → Guernsey</h3>
+          <aside class="notes">Handling sztori, indulás hangulata.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Guernsey" data-i18n-en="Guernsey">Guernsey</h3>
+          <img src="assets/guernsey.jpg" alt="Guernsey táj" />
+          <p class="subtitle" data-i18n-hu="Kőfalak, tehenek, szuper kedves emberek." data-i18n-en="Stone walls, cows, super friendly people.">Kőfalak, tehenek, szuper kedves emberek.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: La Manche és az árapály" data-i18n-en="Facts: English Channel & Tides">Tények: La Manche és az árapály</h3>
+          <p data-i18n-hu="Akár 10 m vízszint-különbség; erős áramlások → tervezésnél kritikus." data-i18n-en="Up to 10 m tidal range; strong currents — critical for planning.">Akár 10 m vízszint-különbség; erős áramlások → tervezésnél kritikus.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Killarney, Írország" data-i18n-en="Killarney, Ireland">Killarney, Írország</h3>
+          <img src="assets/killarney.jpg" alt="Killarney tóvidék" />
+          <p class="subtitle" data-i18n-hu="Mesebeli tavak és völgyek, vízesések." data-i18n-en="Fairytale lakes and valleys, waterfalls.">Mesebeli tavak és völgyek, vízesések.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: jég vájta Írország" data-i18n-en="Facts: Glacially-Carved Ireland">Tények: jég vájta Írország</h3>
+          <p>U-alakú völgyek, tavak – utolsó jégkorszak öröksége.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Enniskillen → Islay – első önálló irányítás" data-i18n-en="Enniskillen → Islay — first hands-on control">Enniskillen → Islay – első önálló irányítás</h3>
+          <video src="assets/first_flight.mp4" controls playsinline></video>
+          <aside class="notes">Rövid sztori az első kormánynál töltött szakaszról.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Skót-felföld, Eilean Donan" data-i18n-en="Scottish Highlands, Eilean Donan">Skót-felföld, Eilean Donan</h3>
+          <img src="assets/eilean_donan.jpg" alt="Eilean Donan Castle" />
+          <p class="subtitle" data-i18n-hu="„Kicsit… nagyon alacsonyan” – a látványért." data-i18n-en="“A bit… very low” — for the view.">„Kicsit… nagyon alacsonyan” – a látványért.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: Golf-áramlat hatása" data-i18n-en="Facts: Gulf Stream Effect">Tények: Golf-áramlat hatása</h3>
+          <p>Meleg északi-Atlanti-áramlat → enyhébb éghajlat, sok csapadék.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Stornoway – tengeri kaja és pubok" data-i18n-en="Stornoway — seafood and pubs">Stornoway – tengeri kaja és pubok</h3>
+          <img src="assets/stornoway.jpg" alt="Stornoway kikötő" />
+          <p class="subtitle" data-i18n-hu="Kisváros a világ peremén." data-i18n-en="A small town at the edge of the world.">Kisváros a világ peremén.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: Hebridák és tőzeg" data-i18n-en="Facts: Hebrides & Peat">Tények: Hebridák és tőzeg</h3>
+          <p>Szélformálta, tőzeges szigetek – évszázadokig fűtőanyag.</p>
+        </section>
+      </section>
+
+      <!-- 4. SKÓCIA → FERÖER → IZLAND -->
+      <section>
+        <section data-background-image="assets/route_stornoway_faroe_iceland.png" data-background-opacity="0.2">
+          <h3 data-i18n-hu="Stornoway → Feröer → Izland" data-i18n-en="Stornoway → Faroe → Iceland">Stornoway → Feröer → Izland</h3>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Feröer – „ködvízesések”" data-i18n-en="Faroe — ‘fog waterfalls’">Feröer – „ködvízesések”</h3>
+          <img src="assets/faroe_fogfalls.jpg" alt="Feröer ködvízesések" />
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: bazaltplatók" data-i18n-en="Facts: Basalt Plateaus">Tények: bazaltplatók</h3>
+          <p>Vulkanikus eredet, 55 millió éves lávafolyások rétegei.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Óceáni átrepülés" data-i18n-en="Ocean Crossing">Óceáni átrepülés</h3>
+          <video src="assets/ocean_leg.mp4" controls playsinline></video>
+          <aside class="notes">Csend, horizont, felelősség érzése.</aside>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Egilsstaðir – hosszú nappalok" data-i18n-en="Egilsstaðir — long daylight">Egilsstaðir – hosszú nappalok</h3>
+          <img src="assets/egilsstadir.jpg" alt="Egilsstaðir" />
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: Közép-Atlanti-hátság" data-i18n-en="Facts: Mid-Atlantic Ridge">Tények: Közép-Atlanti-hátság</h3>
+          <p>Izlandon a lemezhatár a felszínen – évi ~2 cm távolodás.</p>
+        </section>
+      </section>
+
+      <!-- 5. IZLAND → GRÖNLAND – CSÚCSPONT -->
+      <section>
+        <section data-background-image="assets/route_iceland_greenland.png" data-background-opacity="0.2">
+          <h3 data-i18n-hu="Egilsstaðir → Constable Point → Kulusuk → Ilulissat → Nuuk" data-i18n-en="Egilsstaðir → Constable Point → Kulusuk → Ilulissat → Nuuk">Egilsstaðir → Constable Point → Kulusuk → Ilulissat → Nuuk</h3>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Első jéghegyek" data-i18n-en="First Icebergs">Első jéghegyek</h3>
+          <img src="assets/first_icebergs.jpg" alt="Első jéghegyek" />
+        </section>
+        <section>
+          <h3 data-i18n-hu="Constable Point – kutatóállomás" data-i18n-en="Constable Point — research outpost">Constable Point – kutatóállomás</h3>
+          <img src="assets/constable_point.jpg" alt="Constable Point" />
+          <p class="subtitle" data-i18n-hu="13 fő, tundra, szúnyogok – a világ vége érzés." data-i18n-en="13 people, tundra, mosquitos — end‑of‑the‑world vibe.">13 fő, tundra, szúnyogok – a világ vége érzés.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: Scoresby Sund" data-i18n-en="Facts: Scoresby Sund">Tények: Scoresby Sund</h3>
+          <p>A világ legnagyobb fjordrendszere, >300 km; jégkorszak vájta.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="VFR manőverek gleccserek között" data-i18n-en="VFR maneuvers among glaciers">VFR manőverek gleccserek között</h3>
+          <video src="assets/glacier_vfr.mp4" controls playsinline></video>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: gleccserek mozgása" data-i18n-en="Facts: Glacier Dynamics">Tények: gleccserek mozgása</h3>
+          <p>Több km vastag jég, évente száz métert „folyik” a tenger felé.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Kulusuk – leszállás a „jegesmedve-zónában”" data-i18n-en="Kulusuk — landing in polar bear territory">Kulusuk – leszállás a „jegesmedve-zónában”</h3>
+          <img src="assets/kulusuk.jpg" alt="Kulusuk" />
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: inuit alkalmazkodás" data-i18n-en="Facts: Inuit Adaptation">Tények: inuit alkalmazkodás</h3>
+          <p>Vadászat, közösség, lassú élet – modern technika mellett is.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Ilulissat – jéghegyek és bálnák" data-i18n-en="Ilulissat — icebergs and whales">Ilulissat – jéghegyek és bálnák</h3>
+          <img src="assets/ilulissat.jpg" alt="Ilulissat" />
+        </section>
+        <section>
+          <h3 data-i18n-hu="Eqi-gleccser – kalving" data-i18n-en="Eqi Glacier — calving">Eqi-gleccser – kalving</h3>
+          <video src="assets/eqi_calving.mp4" controls playsinline></video>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Tények: tengerszint-emelkedés" data-i18n-en="Facts: Sea‑level Rise">Tények: tengerszint-emelkedés</h3>
+          <p>Grönland olvadása évi ~250+ Gt – globális szintre hat.</p>
+        </section>
+        <section>
+          <h3 data-i18n-hu="Nuuk – zárás a jég és a tenger közt" data-i18n-en="Nuuk — closing between ice and sea">Nuuk – zárás a jég és a tenger közt</h3>
+          <img src="assets/nuuk.jpg" alt="Nuuk" />
+        </section>
+      </section>
+
+      <!-- 6. LEZÁRÁS -->
+      <section>
+        <section data-background-image="assets/sunset_wing.jpg" data-background-opacity="0.25">
+          <h3 data-i18n-hu="„A kíváncsiság visz a világ végére.”" data-i18n-en="“Curiosity takes you to the world’s edge.”">„A kíváncsiság visz a világ végére.”</h3>
+          <p class="subtitle" data-i18n-hu="Merj elindulni. A többi útközben kiderül." data-i18n-en="Dare to start. The rest reveals itself en route.">Merj elindulni. A többi útközben kiderül.</p>
+          <aside class="notes">Köszönő szavak, Q&A 5–10 perc.</aside>
+        </section>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      controls: true,
+      progress: true,
+      center: true,
+      width: 1280,
+      height: 720,
+      transition: 'fade',
+      // Videók auto lejátszása, ha a böngésző engedi (némítva)
+      autoPlayMedia: true,
+      plugins: []
+    });
+  </script>
+  <script>
+    // Simple dual-language toggler: looks for data-i18n-hu / data-i18n-en attributes
+    (function(){
+      const select = document.getElementById('lang');
+      const LS_KEY = 'btice_lang';
+      function apply(lang){
+        document.documentElement.setAttribute('lang', lang);
+        document.querySelectorAll('[data-i18n-' + lang + ']').forEach(el => {
+          const txt = el.getAttribute('data-i18n-' + lang);
+          if (txt != null) el.innerHTML = txt;
+        });
+        localStorage.setItem(LS_KEY, lang);
+      }
+      const saved = localStorage.getItem(LS_KEY) || 'hu';
+      select.value = saved;
+      select.addEventListener('change', e => apply(e.target.value));
+      apply(saved);
+    })();
+  </script>
+</body>
+</html>
