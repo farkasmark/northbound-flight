@@ -1,16 +1,3 @@
-### **Repository name:**
-
-`beyond-the-ice`
-
-### **Short GitHub description (the line under the repo name):**
-
-> An interactive HTML presentation built with Reveal.js — a personal flight from Basel to Greenland in a Diamond DA42, exploring freedom, science, and the beauty of the Arctic world.
-
----
-
-### **README.md (suggested content)**
-
-````markdown
 # 🧭 Beyond the Ice  
 ### A journey through air, ice, and curiosity
 
